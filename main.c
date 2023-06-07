@@ -7,6 +7,7 @@ int main (void)
     char nickname[8];
 
     printf("What is your name?\n");
+    printf("Enter your name: ");
 
 // scanf("%7[^\n]", nickname); // ' ', \n, \t
 
@@ -17,7 +18,7 @@ int main (void)
     if (nickname[len] == 10)
         nickname[len] = 0;
 
-    printf("Hi %s\n", nickname);
+    printf("Hello %s\n", nickname);
 
     printf("It's a good weather tooday.\n");
 
