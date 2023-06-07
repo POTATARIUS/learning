@@ -1,39 +1,36 @@
-#include <stdio.h> // стандарт input\output
+#include <stdio.h>   // стандарт input\output
 #include <string.h> // библиотека для работ со строками
 
-// also try check function of git
-
 int main (void)
-{   
+{
+    int c;
     int len;
-    char nickname[8];
+    int goblin_gold = 15;
+    int goblin_hp = 3;
+    int player_gold = 0;
+    char action;
+    char nickname[10];
 
     printf("What is your name?\n");
     printf("Enter your name: ");
 
-// scanf("%7[^\n]", nickname); // ' ', \n, \t
+//  scanf("%9s", nickname);
 
     fgets(nickname, sizeof(nickname), stdin);
 
-    len = strlen(nickname) -1;
+    len = strlen(nickname);
 
-    if (nickname[len] == 10)
-        nickname[len] = 0;
+    if (nickname[len - 1] == '\n')                     // clear buff if short input
+        nickname[len - 1] = '\0';
+    else                                             // clear buff if long input
+        while ((c = getchar()) != '\n' && c != EOF) // clear buffer
+            ;
 
     printf("Hello %s\n", nickname);
 
     printf("It's a good weather tooday.\n");
 
-    return 0;
-}
-/*
-
-    int goblin_gold = 15;
-    int goblin_hp = 3;
-    int player_gold = 0;
-    char action;
-
-    printf("You attacked by goblin. Goblin HP is %d (A)ttack or 'r'un\n", goblin_hp);
+    printf("You attacked by goblin. Goblin HP is %d (A)'a'ttack or (R)'r'un\n", goblin_hp);
 
     action = getchar();
 
@@ -61,6 +58,7 @@ int main (void)
         getchar();
         printf("Next action? \n");
         action = getchar();
+
     }
     
     if (action == 'r')
@@ -68,5 +66,3 @@ int main (void)
     
     return 0;
 }
-
-*/
