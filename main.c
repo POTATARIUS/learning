@@ -1,6 +1,8 @@
 #include <stdio.h> // стандарт input\output
 #include <string.h> // библиотека для работ со строками
 
+// also try check function of git
+
 int main (void)
 {   
     int len;
