@@ -1,15 +1,32 @@
 #include <stdio.h>   // стандарт input\output
 #include <string.h> // библиотека для работ со строками
 
-int main (void)
+int battle(int player_gold)
+{
+    int goblin_gold = 15;
+
+    for (int goblin_hp = 3; goblin_hp >= 0; goblin_hp--)
+    {
+        if (goblin_hp != 3)
+            printf("You kick goblin. Goblin HP: %d \n", goblin_hp);
+
+        if (goblin_hp == 0)
+        {
+            printf("You defeat Goblin. \n");
+
+            player_gold += goblin_gold;
+
+            printf("You found %d gold. You have %d gold total. \n", goblin_gold, player_gold);
+            break;
+        }
+    }
+    return player_gold;
+}
+
+int hello(char *nickname)
 {
     int c;
     int len;
-    int goblin_gold = 15;
-    int goblin_hp = 3;
-    int player_gold = 0;
-    char action;
-    char nickname[10];
 
     printf("What is your name?\n");
     printf("Enter your name: ");
@@ -28,9 +45,18 @@ int main (void)
 
     printf("Hello %s\n", nickname);
 
-    printf("It's a good weather tooday.\n");
+    return 0;
+}
 
-    printf("You attacked by goblin. Goblin HP is %d (A)'a'ttack or (R)'r'un\n", goblin_hp);
+int main (void)
+{
+    int player_gold = 0;
+    char action;
+    char nickname[10];
+
+    hello(nickname); // nane of player 
+
+    printf("You attacked by goblin. (A)'a'ttack or (R)'r'un\n");
 
     action = getchar();
 
@@ -38,31 +64,17 @@ int main (void)
     {
         if (action == 'a' || action == 'A')
         {
-            for (goblin_hp = 3; goblin_hp >= 0; goblin_hp--)
-            {
-                if (goblin_hp != 3)
-                    printf("You kick goblin. Goblin HP: %d \n", goblin_hp);
-            
-                if (goblin_hp == 0)
-                {
-                    printf("You defeat Goblin. \n");
-
-                    player_gold += goblin_gold;
-
-                    printf("You found %d gold. You have %d gold total. \n", goblin_gold, player_gold);
-                    break;
-                }
-            }
+            player_gold = battle(player_gold); // battle proces 
         }
 
-        getchar();
         printf("Next action? \n");
+        getchar();
         action = getchar();
 
     }
     
     if (action == 'r')
-        printf("You've decided to run away. \n");
+        printf("You earned %d gold. Goog job! \n", player_gold);
     
     return 0;
 }
