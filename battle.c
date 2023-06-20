@@ -1,16 +1,19 @@
-#include <stdio.h>
-#include "battle.h"
+//#include <stdio.h>
+#include "global.h"
 
 int battle(int player_gold)
 {
-    int goblin_gold = 15;
+    srand(time(NULL)); // seed. rng 0-2kkk
 
-    for (int goblin_hp = 3; goblin_hp >= 0; goblin_hp--)
+    int goblin_gold = rand() % 20;
+    int goblin_hp = rand() % 5;
+    int goblin_hp_new = goblin_hp;
+    for (goblin_hp_new; goblin_hp_new >= 0; goblin_hp_new--)
     {
-        if (goblin_hp != 3)
-            printf("You kick goblin. Goblin HP: %d \n", goblin_hp);
+        if (goblin_hp_new != goblin_hp)
+            printf("You kick goblin. Goblin HP: %d \n", goblin_hp_new);
 
-        if (goblin_hp == 0)
+        if (goblin_hp_new == 0)
         {
             printf("You defeat Goblin. \n");
 
@@ -22,4 +25,29 @@ int battle(int player_gold)
     }
     
     return player_gold;
+}
+
+int hello(char *nickname)
+{
+    int c;
+    int len;
+
+    printf("What is your name?\n");
+    printf("Enter your name: ");
+
+//  scanf("%9s", nickname);
+
+    fgets(nickname, sizeof(nickname), stdin);
+
+    len = strlen(nickname);
+
+    if (nickname[len - 1] == '\n')                     // clear buff if short input
+        nickname[len - 1] = '\0';
+    else                                             // clear buff if long input
+        while ((c = getchar()) != '\n' && c != EOF) // clear buffer
+            ;
+
+    printf("Hello %s\n", nickname);
+
+    return 0;
 }

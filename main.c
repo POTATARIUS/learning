@@ -1,39 +1,21 @@
-#include <stdio.h>   // стандарт input\output
-#include <string.h> // библиотека для работ со строками
+//#include <stdio.h>   // стандарт input\output
+//#include <string.h> // библиотека для работ со строками
+//#include <stdlib.h>
+//#include <time.h>
 
-#include "battle.h"
-
-int hello(char *nickname)
-{
-    int c;
-    int len;
-
-    printf("What is your name?\n");
-    printf("Enter your name: ");
-
-//  scanf("%9s", nickname);
-
-    fgets(nickname, sizeof(nickname), stdin);
-
-    len = strlen(nickname);
-
-    if (nickname[len - 1] == '\n')                     // clear buff if short input
-        nickname[len - 1] = '\0';
-    else                                             // clear buff if long input
-        while ((c = getchar()) != '\n' && c != EOF) // clear buffer
-            ;
-
-    printf("Hello %s\n", nickname);
-
-    return 0;
-}
+#include "global.h"
+//#include "battle.c"
 
 int main (void)
-{
+{  
     int player_gold = 0;
     char action;
     char nickname[10];
 
+    short foo = 33000;
+
+    printf("%hd\n\n\n", foo);
+    
     hello(nickname); // nane of player 
 
     printf("You attacked by goblin. (A)'a'ttack or (R)'r'un\n");

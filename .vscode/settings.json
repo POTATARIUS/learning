@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "stdio.h": "c",
+        "battle.h": "c",
+        "global.h": "c"
+    }
+}
