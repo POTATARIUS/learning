@@ -1,5 +1,20 @@
-//#include <stdio.h>
-#include "global.h"
+#include "functions.h"
+
+int tavern(int player_gold)
+{
+    int ale_mug_cost = 3;
+    
+    if ( player_gold >= 3)
+    {
+        player_gold -= ale_mug_cost;
+        printf("You've bought mug of ale for %d gold!"
+                    "Now you  have  %d gold  left\n", ale_mug_cost, player_gold); 
+    }
+    else
+        printf("You don't have enough gold to buy an ale:( \n");
+
+    return player_gold;
+}
 
 int battle(int player_gold)
 {
@@ -27,17 +42,17 @@ int battle(int player_gold)
     return player_gold;
 }
 
-int hello(char *nickname)
+int hello(char *nickname, int buffer_size)
 {
     int c;
     int len;
 
-    printf("What is your name?\n");
+    printf("What's your name?\n");
     printf("Enter your name: ");
 
 //  scanf("%9s", nickname);
 
-    fgets(nickname, sizeof(nickname), stdin);
+    fgets(nickname, buffer_size, stdin);
 
     len = strlen(nickname);
 
